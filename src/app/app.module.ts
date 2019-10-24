@@ -1,3 +1,4 @@
+import { CategoryService } from './category.service';
 import { AdminAuthGuardService } from './admin-auth-guard.service';
 
 
@@ -84,7 +85,7 @@ import { ProductFormComponent } from './admin/product-form/product-form.componen
 
        
       {path: 'admin/products/new', component: ProductFormComponent,  canActivate: [AuthGuard, AdminAuthGuardService]},
-      
+
     
   ])
     
@@ -94,6 +95,7 @@ import { ProductFormComponent } from './admin/product-form/product-form.componen
     AuthGuard, 
     AdminAuthGuardService,
     UserService,
+    CategoryService
   
   
   ],
