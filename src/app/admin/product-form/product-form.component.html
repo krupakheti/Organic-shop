@@ -29,6 +29,13 @@
     <label for="category">Category</label>
     <select id = "Category"  class="form-control">
             <option value=""></option>
+            <option *ngFor="let c of categories$ | async" [value] = "c.$key">
+             <!--$key is a value from db console with the id -->
+             <!-- Directives added to find the categories and applied in constructor -->
+             {{c.name}}
+             </option>
+             
+
     </select>
 
 

@@ -8,7 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProductFormComponent implements OnInit {
 
-  constructor(CategoryService: CategoryService) { }
+  categories$: any;
+
+  constructor(CategoryService: CategoryService) { 
+    this.categories$= CategoryService.getCategories();
+  }
+
+
 
   ngOnInit() {
   }
