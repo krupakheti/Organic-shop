@@ -1,3 +1,4 @@
+import { ProductService } from './product.service';
 import { CategoryService } from './category.service';
 import { AdminAuthGuardService } from './admin-auth-guard.service';
 
@@ -31,6 +32,8 @@ import { ProductsComponent } from './products/products.component';
 import { AuthGuard } from './auth-guard.service';
 import { UserService } from './user.service';
 import { ProductFormComponent } from './admin/product-form/product-form.component';
+import {FormsModule} from '@angular/forms';
+
 
 
 
@@ -61,7 +64,8 @@ import { ProductFormComponent } from './admin/product-form/product-form.componen
 
 
   imports: [
-    
+
+    FormsModule,
     BrowserModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
@@ -95,7 +99,8 @@ import { ProductFormComponent } from './admin/product-form/product-form.componen
     AuthGuard, 
     AdminAuthGuardService,
     UserService,
-    CategoryService
+    CategoryService,
+    ProductService
   
   
   ],
