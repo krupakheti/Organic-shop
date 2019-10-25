@@ -33,6 +33,7 @@ import { AuthGuard } from './auth-guard.service';
 import { UserService } from './user.service';
 import { ProductFormComponent } from './admin/product-form/product-form.component';
 import {FormsModule} from '@angular/forms';
+import {CustomFormsModule} from 'ng2-validation';
 
 
 
@@ -54,6 +55,7 @@ import {FormsModule} from '@angular/forms';
     AdminOrdersComponent,
     LoginComponent,
     ProductFormComponent
+
     
     
         
@@ -73,6 +75,7 @@ import {FormsModule} from '@angular/forms';
     AngularFireAuthModule,
     AngularFireModule,
     NgbModule,
+    CustomFormsModule,
     RouterModule.forRoot([
       {path: '', component: HomeComponent},
       {path: 'products', component: ProductsComponent},
