@@ -93,7 +93,7 @@ import {CustomFormsModule} from 'ng2-validation';
        
       {path: 'admin/products/new', component: ProductFormComponent,  canActivate: [AuthGuard, AdminAuthGuardService]},
 
-    
+      {path: 'admin/products/:id', component: ProductFormComponent,  canActivate: [AuthGuard, AdminAuthGuardService]},
   ])
     
   ],
