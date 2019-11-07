@@ -12,9 +12,6 @@ import 'rxjs/add/observable/of';
 
 @Injectable()
 
-
-
-
 export class AuthService {
 
   user$: Observable<firebase.User>;
@@ -35,7 +32,6 @@ export class AuthService {
 
     this.afAuth.auth.signInWithRedirect(new firebase.auth.GoogleAuthProvider());
       
-  
     }
 
 
@@ -45,8 +41,6 @@ export class AuthService {
 
   }
 
-
-
  get appUser$() : Observable<AppUser> {
     return this.user$
       .switchMap(user => {
@@ -54,8 +48,6 @@ export class AuthService {
 
 
         return Observable.of(null)
-
-
   });
 
  }

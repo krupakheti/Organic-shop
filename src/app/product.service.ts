@@ -3,6 +3,9 @@ import { Injectable } from '@angular/core';
 
 @Injectable()
 export class ProductService {
+  static getAll(): any {
+    throw new Error("Method not implemented.");
+  }
 
   constructor(private db: AngularFireDatabase) { }
 
