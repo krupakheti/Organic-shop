@@ -1,5 +1,5 @@
 import { ProductService } from './../../product.service';
-import { CategoryService } from './../../category.service';
+import { CategoryService} from './../../category.service';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import 'rxjs/add/operator/take';
@@ -11,11 +11,7 @@ import 'rxjs/add/operator/take';
   styleUrls: ['./product-form.component.css']
 
 })
-export class ProductFormComponent implements OnInit, OnDestroy {
-  ngOnDestroy(): void {
-    throw new Error("Method not implemented.");
-  }
-
+export class ProductFormComponent implements OnInit{
   
 
   categories$: any;
@@ -25,7 +21,7 @@ export class ProductFormComponent implements OnInit, OnDestroy {
     
     private router: Router,
     private route: ActivatedRoute,
-    private CategoryService: CategoryService, 
+    private categoryService: CategoryService,
     private ProductService: ProductService) { 
     this.categories$= CategoryService.getCategories();
 
@@ -35,15 +31,10 @@ export class ProductFormComponent implements OnInit, OnDestroy {
     
   }
 
-  save(product) {
+  save(product: any) {
     
     this.ProductService.create(product);
     this.router.navigate(['/admin/products']);
-
-
-    
-  
-
   }
 
 
