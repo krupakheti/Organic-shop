@@ -1,45 +1,44 @@
+import { CategoryService } from './../../category.service';
 import { ProductService } from './../../product.service';
-import { CategoryService} from './../../category.service';
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
-import 'rxjs/add/operator/take';
+import { ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 
+
+import { Component, OnInit } from '@angular/core';
+import 'rxjs/add/operator/take'; 
 
 @Component({
   selector: 'app-product-form',
   templateUrl: './product-form.component.html',
   styleUrls: ['./product-form.component.css']
-
 })
-export class ProductFormComponent implements OnInit{
-  
-
-  categories$: any;
-  product = {};
+export class ProductFormComponent implements OnInit {
+  categories$;
+  product = {}; 
+  id;
 
   constructor(
-    
-    private router: Router,
+    private router: Router, 
     private route: ActivatedRoute,
-    private categoryService: CategoryService,
-    private ProductService: ProductService) { 
-    this.categories$= CategoryService.getCategories();
+    private categoryService: CategoryService, 
+    private productService: ProductService) {
+    this.categories$ = categoryService.getAll();
 
-    let id = this.route.snapshot.paramMap.get('id');
-    if (id) this.ProductService.get(id). take(1).subscribe (p =>this.product = p);
-
-    
+    this.id = this.route.snapshot.paramMap.get('id');
+    if (this.id) this.productService.get(this.id).take(1).subscribe(p => this.product = p);
   }
 
-  save(product: any) {
-    
-    this.ProductService.create(product);
-    this.router.navigate(['/admin/products']);
+  save(product){
+    if(this.id) this.productService.update(this.id, product);
+    else this.productService.create(product);
+  
+   this.router.navigate(['/admin/products']);
+
   }
 
+ 
 
   ngOnInit() {
   }
-
 
 }
