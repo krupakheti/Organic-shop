@@ -10,7 +10,7 @@ export class ProductsComponent {
 products$
 
 
-  constructor(productService: ProductService) { 
+  constructor(ProductService: ProductService) { 
     this.products$ = ProductService.getAll();
   
 }
