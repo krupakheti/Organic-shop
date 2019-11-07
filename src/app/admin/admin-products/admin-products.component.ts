@@ -1,5 +1,6 @@
 import { ProductService } from './../../product.service';
 import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-admin-products',
@@ -8,16 +9,28 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 })
 export class AdminProductsComponent implements OnInit, OnDestroy {
   
-  
-  products$;
+  products: {title: string}[];
+  filteredProducts: any[];
+
+  subscription: Subscription;
+
 
   constructor(private ProductService: ProductService) {
-      this.products$= this.ProductService.getAll();
+     this.subscription =  this.ProductService.getAll().subscribe(products => this.products = products);
+         
 
    }
 
+  filter(query: string){
+    this.filteredProducts = (query)?
+    this.products.filter(p=> p.title.toLowerCase().includes(query.toLocaleLowerCase())) : 
+    this.products;
+  }
+
+
+
    ngOnDestroy(){
-     
+          this.subscription.unsubscribe();
    }
         
   ngOnInit() {
