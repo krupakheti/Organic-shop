@@ -2,6 +2,7 @@ import { Product } from './../../models/product';
 import { ProductService } from './../../product.service';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
+import { DataTableResource } from 'angular-4-data-table';
 
 @Component({
   selector: 'app-admin-products',
@@ -14,10 +15,23 @@ export class AdminProductsComponent implements OnInit, OnDestroy {
   filteredProducts: any[];
 
   subscription: Subscription;
+  tableResource: DataTableResource<Product>;
+  items: Product[];
+  itemCount : number;
+
+
 
 
   constructor(private ProductService: ProductService) {
-     this.subscription =  this.ProductService.getAll().subscribe(products => this.products = products);
+     this.subscription =  this.ProductService.getAll().subscribe(products =>{
+              this.filteredProducts = this.products = products;
+              this.tableResource = new DataTableResource(products);
+              this.tableResource.query({offset: 0 })
+                .then(items => this.items = items);
+              this.tableResource.count()
+                .then (count => this.itemCount = count);  // all about initializing the data-table
+
+     });
          
 
    }
@@ -38,3 +52,5 @@ export class AdminProductsComponent implements OnInit, OnDestroy {
   }
 
 }
+
+
