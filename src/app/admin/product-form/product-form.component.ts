@@ -19,7 +19,7 @@ export class ProductFormComponent implements OnInit, OnDestroy {
   
 
   categories$: any;
-  product;
+  product = {};
 
   constructor(
     
