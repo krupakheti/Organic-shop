@@ -34,6 +34,7 @@ import { UserService } from './user.service';
 import { ProductFormComponent } from './admin/product-form/product-form.component';
 import {FormsModule} from '@angular/forms';
 import {CustomFormsModule} from 'ng2-validation';
+import { ProductFilterComponent } from './products/product-filter/product-filter.component';
 
 
 
@@ -54,7 +55,8 @@ import {CustomFormsModule} from 'ng2-validation';
     AdminProductsComponent,
     AdminOrdersComponent,
     LoginComponent,
-    ProductFormComponent
+    ProductFormComponent,
+    ProductFilterComponent
 
     
     
