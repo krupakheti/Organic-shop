@@ -15,6 +15,7 @@ Products: Product[] = [];
 filteredProducts: Product[] = [];
 
 category: string;
+  products: unknown;
 
 
   constructor(
@@ -26,7 +27,7 @@ category: string;
     productService
     .getAll()
     .switchMap(products => {
-      this.Products = products;
+      this.products = products;
       return route.queryParamMap;
     })
 
